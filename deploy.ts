@@ -16,7 +16,7 @@ const privateKey = bsv.PrivateKey.fromWIF(process.env.PRIVATE_KEY || '')
 const signer = new TestWallet(
     privateKey,
     new DefaultProvider({
-        network: bsv.Networks.testnet,
+        network: bsv.Networks.mainnet,
     })
 )
 
@@ -25,12 +25,14 @@ async function main() {
 
     // TODO: Adjust the amount of satoshis locked in the smart contract:
     const amount = 1
-
-    const instance = new Lockup(
-        // TODO: Adjust constructor parameter values:
-        0n
+    const pubKeyHash = bsv.crypto.Hash.sha256ripemd160(
+        bsv.PublicKey.fromPrivateKey(privateKey).toBuffer()
     )
 
+    const instance = new Lockup(
+        pubKeyHash,
+        500000000n // lockUntilHeight
+    )
     // Connect to a signer.
     await instance.connect(signer)
 

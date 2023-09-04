@@ -17,7 +17,7 @@
     "experimentalDecorators": true,
     "plugins": [
       {
-        "transform": "/Users/davidcase/.nvm/versions/node/v20.2.0/lib/node_modules/scrypt-cli/node_modules/scrypt-ts-transpiler/dist/index.js",
+        "transform": "/home/codenlighten/.npm/_npx/182c6278d2576da8/node_modules/scrypt-ts-transpiler/dist/index.js",
         "transformProgram": true,
         "outDir": "artifacts"
       }
